@@ -1,12 +1,16 @@
 import React from "react";
 
 const Register = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target[0].value);
+  };
   return (
     <div className="formContainer">
       <div className="formWrapper">
         <span className="logo">My Chat</span>
         <span className="title">Register</span>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input type="text" placeholder="display name" />
           <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />
