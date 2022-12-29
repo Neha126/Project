@@ -8,6 +8,7 @@ import {
   doc,
   updateDoc,
   serverTimestamp,
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
@@ -43,7 +44,7 @@ export const Search = () => {
         ? currentUser.uid + user.uid
         : user.uid + currentUser.uid;
     try {
-      const res = await getDocs(db, "chats", combinedId);
+      const res = await getDoc(doc(db, "chats", combinedId));
       if (!res.exists()) {
         await setDoc(doc(db, "chats", combinedId), { messages: [] });
 
