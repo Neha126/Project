@@ -13,7 +13,7 @@ import {
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 
-export const Search = () => {
+const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);

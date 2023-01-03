@@ -13,11 +13,11 @@ export const Chats = () => {
 
   useEffect(() => {
     const getChats = () => {
-      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+      const unSub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         setChats(doc.data());
       });
       return () => {
-        unsub();
+        unSub();
       };
     };
     currentUser.uid && getChats();
@@ -30,7 +30,7 @@ export const Chats = () => {
     <div className="chats">
       {Object.entries(chats)
         ?.sort((a, b) => b[1].date - a[1].date)
-        .map((chat) => [
+        .map((chat) => (
           <div
             className="userChat"
             key={chat[0]}
@@ -41,8 +41,8 @@ export const Chats = () => {
               <span>{chat[1].userInfo.displayName}</span>
               <p>{chat[1].lastMessage?.text}</p>
             </div>
-          </div>,
-        ])}
+          </div>
+        ))}
     </div>
   );
 };
